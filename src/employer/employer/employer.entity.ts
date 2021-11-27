@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Publication } from 'src/jobPublication/publication/publication.entity';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
 @Entity()
 export class Employer {
@@ -11,6 +12,18 @@ export class Employer {
   @Column()
   lastname: string;
 
-  @Column({ default: false })
-  completed: boolean;
+  @Column()
+  age: number;
+
+  @Column()
+  companyName: string;
+  
+  @Column()
+  dni: number;
+  
+  @Column()
+  numberPhone: number;
+
+  @OneToMany(() => Publication, (publicationn) => publicationn.employer)
+  publications: Publication[];
 }
