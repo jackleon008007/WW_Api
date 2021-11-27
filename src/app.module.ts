@@ -21,13 +21,12 @@ import { JobApplicationService } from './jobApplications/job-application/job-app
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'postgres',
-      password: 'Lp3y9E6X',
-      database: 'ww_db',
+      url: process.env.DATABASE_URL,
       entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: false,
+      ssl: {
+        rejectUnauthorized: false,
+      },
       retryDelay: 3000,
       retryAttempts: 10,
     }),
