@@ -16,7 +16,10 @@ export class Publication {
   id: number;
 
   @Column()
-  name: string;
+  heading: string;
+  
+  @Column()
+  place: string;
 
   @Column()
   title: string;

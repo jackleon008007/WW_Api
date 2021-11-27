@@ -1,16 +1,16 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { PublicationService } from '../publication.service';
 
-@Controller('api/search')
+@Controller('api/publication/search')
 export class SearchController {
   constructor(private publicationService: PublicationService) {}
 
-  @Get('/title/:title')
-  getByTitle(@Param('title') title: string) {
-    return this.publicationService.findByTitle(title);
+  @Get('/heading/:heading')
+  getByTitle(@Param('heading') heading: string) {
+    return this.publicationService.findByHeading(heading);
   }
-  @Get('/name/:name')
-  getByName(@Param('name') name: string) {
-    return this.publicationService.findByName(name);
+  @Get('/place/:place')
+  getByName(@Param('place') place: string) {
+    return this.publicationService.findByPlace(place);
   }
 }

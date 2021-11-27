@@ -19,11 +19,11 @@ export class PublicationService {
   finById(id: number) {
     return this.publicationRepo.findOne(id);
   }
-  findByTitle(title1: string) {
-    return this.publicationRepo.findOne({ where: { title: title1 } });
+  findByPlace(place1: string) {
+    return this.publicationRepo.find({ where: { place: place1 } });
   }
-  findByName(name1: string) {
-    return this.publicationRepo.findOne({ where: { name: name1 } });
+  findByHeading(heading1: string) {
+    return this.publicationRepo.find({ where: { heading: heading1 } });
   }
 
   async create(body: any) {
@@ -32,8 +32,9 @@ export class PublicationService {
       throw new NotFoundException('employer Not Found');
     }
     const newpublication = new Publication();
-    newpublication.name = body.name;
+    newpublication.heading = body.heading;
     newpublication.title = body.title;
+    newpublication.place = body.place;
     newpublication.dateCreated = body.dateCreated;
     newpublication.content = body.content;
     newpublication.description = body.description;
